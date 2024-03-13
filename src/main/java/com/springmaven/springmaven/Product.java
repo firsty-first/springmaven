@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 public class Product {
     @Id
     private String productId;
-    private LocalDateTime launchTime;
-    private LocalDateTime expiryTime;
+    private String launchTime;
+    private String expiryTime;
 
     // Getters and setters
 
@@ -23,19 +23,19 @@ public class Product {
         this.productId = productId;
     }
 
-    public LocalDateTime getLaunchTime() {
+    public String getLaunchTime() {
         return launchTime;
     }
 
-    public void setLaunchTime(LocalDateTime launchTime) {
+    public void setLaunchTime(String launchTime) {
         this.launchTime = launchTime;
     }
 
-    public LocalDateTime getExpiryTime() {
+    public String getExpiryTime() {
         return expiryTime;
     }
 
-    public void setExpiryTime(LocalDateTime expiryTime) {
+    public void setExpiryTime(String expiryTime) {
         this.expiryTime = expiryTime;
     }
 }

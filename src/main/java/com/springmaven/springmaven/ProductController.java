@@ -3,6 +3,7 @@ package com.springmaven.springmaven;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Optional;
 
@@ -38,6 +39,7 @@ public class ProductController {
             throw new IllegalArgumentException("Product ID is required");
         }
 
+        // Retrieve product from the database using productId
         Optional<Product> optionalProduct = productRepository.findById(productId);
         if (optionalProduct.isEmpty()) {
             throw new IllegalArgumentException("Product not found");
@@ -45,7 +47,12 @@ public class ProductController {
 
         Product product = optionalProduct.get();
         LocalDateTime now = LocalDateTime.now();
-        return now.isAfter(product.getExpiryTime());
+
+        // Convert expiryTime string to LocalDateTime
+        LocalDateTime expiryTime = LocalDateTime.parse(product.getExpiryTime(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+
+        // Check if current time is after expiry time or not
+        return now.isAfter(expiryTime);
     }
 
 }
