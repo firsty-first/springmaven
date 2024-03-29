@@ -16,7 +16,7 @@ FROM openjdk:17.0.1-jdk-slim
 
 # Set the working directory in the container
 WORKDIR /app
-COPY target/*.jar app.jar
+
 
 # Copy the compiled JAR file from the build stage
 COPY --from=build /app/target/springmaven-0.0.1-SNAPSHOT.jar demo.jar
